@@ -5,14 +5,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
 import org.xutils.x;
-
-@ContentView(R.layout.activity_view_group)
-public class ViewGroupActivity extends AppCompatActivity {
+//viewgroup拦截事件,不让子view接受收事件
+@ContentView(R.layout.activity_view_group01)
+public class ViewGroup1Activity extends AppCompatActivity {
 
     private String tag = "ViewGroupActivity";
 
@@ -24,9 +23,9 @@ public class ViewGroupActivity extends AppCompatActivity {
         supportActionBar.setTitle(getIntent().getStringExtra(MainActivity.TITLE));
     }
 
-    @Event(value = {R.id.btn1, R.id.btn2, R.id.root_ll})
-    private void onViewClick(View view) {
-        switch (view.getId()) {
+    @Event(value = {R.id.btn1,R.id.btn2,R.id.root_ll})
+    private void onViewClick(View view){
+        switch (view.getId()){
             case R.id.btn1:
                 Log.i(tag, "onViewClick1: --->");
                 String text = "onViewClick1: --->";
@@ -46,6 +45,7 @@ public class ViewGroupActivity extends AppCompatActivity {
     public void showToast(String text) {
         ToastUtil.showToast(text);
     }
+
 
 
 }

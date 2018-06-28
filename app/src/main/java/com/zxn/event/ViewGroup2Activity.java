@@ -4,17 +4,22 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-@ContentView(R.layout.activity_view_group)
-public class ViewGroupActivity extends AppCompatActivity {
+//设置viewgroup中任意位置响应点击事件,其子控件不响应点击事件
+@ContentView(R.layout.activity_view_group02)
+public class ViewGroup2Activity extends AppCompatActivity {
 
     private String tag = "ViewGroupActivity";
+    @ViewInject(R.id.root_ll)
+    LinearLayout root_ll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +29,9 @@ public class ViewGroupActivity extends AppCompatActivity {
         supportActionBar.setTitle(getIntent().getStringExtra(MainActivity.TITLE));
     }
 
-    @Event(value = {R.id.btn1, R.id.btn2, R.id.root_ll})
+    @Event(value = {R.id.root_ll})
     private void onViewClick(View view) {
         switch (view.getId()) {
-            case R.id.btn1:
-                Log.i(tag, "onViewClick1: --->");
-                String text = "onViewClick1: --->";
-                showToast(text);
-                break;
-            case R.id.btn2:
-                Log.i(tag, "onViewClick2: --->");
-                showToast("onViewClick2: --->");
-                break;
             case R.id.root_ll:
                 Log.i(tag, "onViewGroup: --->");
                 showToast("onViewGroup: --->");
